@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D368BCA3-AF0B-4DFE-BFAC-4D3C47287101}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EffectiveDating.Core</RootNamespace>
+    <AssemblyName>EffectiveDating.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.2.0\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.2.2.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Data">
+      <HintPath>..\packages\Highway.Data.5.1.1.0\lib\net40\Highway.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Data.EntityFramework">
+      <HintPath>..\packages\Highway.Data.EntityFramework.5.1.1.0\lib\net40\Highway.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Pavement">
+      <HintPath>..\packages\Highway.Pavement.0.3.0.0\lib\net40\Highway.Pavement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Domain\PhysicalAsset.cs" />
+    <Compile Include="Entities\Domain\Resource.cs" />
+    <Compile Include="Entities\Historical\PhysicalAsset.cs" />
+    <Compile Include="Entities\Historical\PhysicalAssetTemporal.cs" />
+    <Compile Include="Extensions\CloneExtensions.cs" />
+    <Compile Include="Extensions\GraphDiff\DbContextExtensions.cs" />
+    <Compile Include="Extensions\GraphDiff\GraphDiffConfiguration.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\ConfigurationVisitor.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\DebugExtensions.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\Extensions.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\GraphDiffer.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\Graph\AssociatedEntityGraphNode.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\Graph\CollectionGraphNode.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\Graph\GraphNode.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\Graph\OwnedEntityGraphNode.cs" />
+    <Compile Include="Extensions\GraphDiff\Internal\MappingDetailFactory.cs" />
+    <Compile Include="Extensions\GraphDiff\IUpdateConfiguration.cs" />
+    <Compile Include="Extensions\ReflectionHelper.cs" />
+    <Compile Include="Interceptors\DateEffectiveInterceptor.cs" />
+    <Compile Include="Interceptors\TemporalProperty.cs" />
+    <Compile Include="Interceptors\TemporalRepresentationAttribute.cs" />
+    <Compile Include="Maps\PhysicalAssetHistoricalMap.cs" />
+    <Compile Include="Maps\PhysicalAssetMap.cs" />
+    <Compile Include="Maps\Domain.cs" />
+    <Compile Include="Maps\HistoricalDomain.cs" />
+    <Compile Include="Maps\TestHistoricalMappings.cs" />
+    <Compile Include="Maps\TestMappings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\GetById.cs" />
+    <Compile Include="Services\EffectiveDatingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
